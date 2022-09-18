@@ -1,0 +1,23 @@
+{:paths ["src/main/clojure"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        com.github.seancorfield/next.jdbc {:mvn/version "1.2.796"}
+        org.slf4j/slf4j-simple {:mvn/version "1.7.28"}
+        com.zaxxer/HikariCP {:mvn/version "4.0.3"}
+        metosin/reitit {:mvn/version "0.5.18"}
+        ring/ring-json {:mvn/version "0.5.1"}
+        ring/ring-jetty-adapter {:mvn/version "1.9.6"}
+        hato/hato {:mvn/version "0.8.2"}
+        cheshire/cheshire {:mvn/version "5.10.2"}
+        talltale/talltale {:mvn/version "0.5.13"}
+        metosin/malli {:mvn/version "0.8.9"}}
+ :aliases {:test {:extra-paths ["test/main/clojure"]
+                  :extra-deps  {org.clojars.czan/stateful-check {:mvn/version "0.4.2"}
+                                lambdaisland/kaocha {:mvn/version "1.69.1069"}
+                                lambdaisland/kaocha-cloverage {:mvn/version "1.0.75"}}
+                  :main-opts   ["-m" "kaocha.runner"]}
+           :repl {:extra-deps  {com.h2database/h2 {:mvn/version "2.1.214"}
+                                ring/ring-devel {:mvn/version "1.9.6"}}}
+           :eastwood {:main-opts ["-m" "eastwood.lint" {}] ;; Any Eastwood options can be passed here as edn:
+                      :extra-deps {jonase/eastwood {:mvn/version "1.2.5"}}}
+           :build {:deps {io.github.clojure/tools.build {:git/tag "v0.8.3" :git/sha "0d20256"}}
+                   :ns-default build}}}
